@@ -1,0 +1,49 @@
+body {
+    font-family: $body-font;
+    font-size:16px;
+    line-height: normal;
+    text-rendering: optimizeLegibility;
+}
+
+h1,h2,h3,
+h4,h5,h6 {
+    font-family: $header-font;
+    font-weight: 900;
+}
+
+.very-emphasised {
+    font-weight: 900;
+    font-style: oblique;
+    color: $highlight-col;
+}
+
+main {
+    display: block;
+    position: relative;
+    width: 100%;
+    padding:0px;
+    margin: 0px;
+}
+
+nav {
+
+    .navbar-brand {
+        display: flex;
+        flex-flow: row wrap;
+        justify-content: flex-start;
+        align-items: center;
+
+        img {
+            position: relative;
+            width: 20%;
+            max-width: 50px;
+            height: auto;
+            margin-right: 15px;
+        }
+    }
+}
+
+footer {
+    text-align: center;
+    font-size: 10px;
+}
