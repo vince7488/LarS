@@ -15,6 +15,11 @@ h6 {
   font-weight: 900;
 }
 
+textarea.form-control,
+textarea.form-control > div {
+  text-align: left;
+}
+
 .very-emphasised {
   font-weight: 900;
   font-style: oblique;
@@ -43,6 +48,7 @@ nav .navbar-brand {
   -webkit-box-align: center;
       -ms-flex-align: center;
           align-items: center;
+  cursor: default;
 }
 
 nav .navbar-brand img {

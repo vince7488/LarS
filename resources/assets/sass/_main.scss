@@ -11,6 +11,11 @@ h4,h5,h6 {
     font-weight: 900;
 }
 
+textarea.form-control,
+textarea.form-control > div {
+    text-align: left;
+}
+
 .very-emphasised {
     font-weight: 900;
     font-style: oblique;
@@ -32,6 +37,7 @@ nav {
         flex-flow: row wrap;
         justify-content: flex-start;
         align-items: center;
+        cursor: default;
 
         img {
             position: relative;
