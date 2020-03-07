@@ -45,38 +45,25 @@
                 
             </div>
         </section>
-        <section class="container-fluid" style="background-color: #e9e4ed">
+        <section class="container-fluid" style="background-color: #e9e4ed;padding: 50px 15px;">
             <div class="container">
-                <div class="row justify-content-start align-items-center">
-                    <div class="col-md-4" style="background-color:#ccc"></div>
-                    <dl class="col-md-8">
-                        <dt class="h4">Title</dt>
-                        <dd>
-                            Content 1
-                            <a href=" {{ route('main.post',['id' => 1],['postId' => 1]) }} " rel="bookmark">read More&hellip;</a>
-                        </dd>
-                    </dl>
-                </div>
-                <div class="row justify-content-start align-items-center">
-                    <div class="col-md-4" style="background-color:#ccc"></div>
-                    <dl class="col-md-8">
-                        <dt class="h4">Title</dt>
-                        <dd>
-                            Content 2
-                            <a href=" {{ route('main.post',['id' => 2]) }} " rel="bookmark">read More&hellip;</a>
-                        </dd>
-                    </dl>
-                </div>
-                <div class="row justify-content-start align-items-center">
-                    <div class="col-md-4" style="background-color:#ccc"></div>
-                    <dl class="col-md-8">
-                        <dt class="h4">Title</dt>
-                        <dd>
-                            Content 3
-                            <a href=" {{ route('main.post',['id' => 3]) }} " rel="bookmark">read More&hellip;</a>
-                        </dd>
-                    </dl>
-                </div>
+
+                @foreach($posts as $post)
+                    @if($post['title'] != null && $post['content'] != null)
+                        <div class="row justify-content-start align-items-start" style="padding: 15px;">
+                            <div class="col-md-4 static-thumb"></div>
+                            <dl class="col-md-8">
+                                <dt class="h4">{{ $post['title'] }}</dt>
+                                <dd>
+                                    {{ $post['content'] }}
+                                    <a href="{{ route('main.post', ['id' => array_search($post, $posts)]) }}" rel="bookmark">read More&hellip;</a>
+                                    
+                                </dd>
+                            </dl>
+                        </div>
+                    @endif
+                @endforeach
+
             </div>
         </section>
     </main>
