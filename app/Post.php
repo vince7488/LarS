@@ -18,8 +18,9 @@ class Post {
     public function getPost($session, $id)
     {
         if (!$session->has('posts')) {
-            $this->createDummyData();
+            $this->createDummyData($session, $id);
         }
+
         return $session->get('posts')[$id];
     }
 
@@ -29,14 +30,17 @@ class Post {
             $this->createDummyData($session);
         }
 
+        $id = rand(4,100000000); //id? Could be.  Unfortuantely, this is NOT the same as $session generated $id
+
         $posts = $session->get('posts');
-        array_push($posts, ['title' => $title, 'content' => $content]);
+        array_push($posts, ['id'=> $id, 'title' => $title, 'content' => $content]);
         $session->put('posts',$posts);
     }
 
     public function editPost($session, $id, $title, $content) {
         $posts = $session->get('posts');
-        $posts[$id] = [ 'title'     =>  $title,
+        $posts[$id] = [ 'id'        =>  $id,
+                        'title'     =>  $title,
                         'content'   =>  $content ];
         $session->put('posts', $posts);
     }
@@ -45,22 +49,22 @@ class Post {
     private function createDummyData($session) {
         $posts = [
             [
-                //'id' => 0,
+                'id' => 0,
                 'title' => null,
                 'content' => null,
             ],
             [
-                //'id' => 1,
+                'id' => 1,
                 'title' => 'Welcome to LarS',
                 'content' => 'Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean commodo ligula eget dolor. Aenean massa. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus.',
             ],
             [
-                //'id' => 2,
+                'id' => 2,
                 'title' => 'About the Author',
                 'content' => 'Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam, eaque ipsa quae ab illo inventore veritatis et quasi architecto beatae vitae dicta.',
             ],
             [
-                //'id' => 3,
+                'id' => 3,
                 'title' => 'The Basics of Web Design',
                 'content' => 'Li Europan lingues es membres del sam familie. Lor separat existentie es un myth. Por scientie, musica, sport etc, litot Europa usa li sam vocabular.',
             ],
